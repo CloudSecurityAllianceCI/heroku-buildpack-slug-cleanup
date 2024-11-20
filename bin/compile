@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # bin/compile BUILD_DIR CACHE_DIR ENV_DIR
 
+echo "-----> BEGIN HEROKU BUILDPACK SLUG CLEANUP\n"
+
 BUILD_DIR=$1
 
 # Cannot remove app/assets/config/manifest.js or the
@@ -9,5 +11,27 @@ echo "-----> Deleting the nested app/assets directories"
 rm -rf $BUILD_DIR/app/assets/images
 rm -rf $BUILD_DIR/app/assets/video
 rm -rf $BUILD_DIR/app/assets/builds
-echo "-----> Deleting node_modules"
+
+echo "-----> Deleting source content"
 rm -rf $BUILD_DIR/node_modules
+
+echo "-----> Deleting test content"
+rm -rf $BUILD_DIR/spec
+
+echo "-----> Deleting unused gems in GEM_PATH (${GEM_PATH::-1})"
+rm -Rf ${GEM_PATH::-1}/gems/sassc*
+rm -Rf ${GEM_PATH::-1}/gems/faker*
+rm -Rf ${GEM_PATH::-1}/gems/image_optim*
+rm -Rf ${GEM_PATH::-1}/gems/yard*
+rm -Rf ${GEM_PATH::-1}/gems/rubocop*
+rm -Rf ${GEM_PATH::-1}/gems/rdoc*
+rm -Rf ${GEM_PATH::-1}/gems/language_server-protocol*
+rm -Rf ${GEM_PATH::-1}/gems/reek*
+rm -Rf ${GEM_PATH::-1}/gems/factory_bot*
+rm -Rf ${GEM_PATH::-1}/gems/sitemap_generator*
+rm -Rf ${GEM_PATH::-1}/gems/annotate*
+rm -Rf ${GEM_PATH::-1}/gems/webrick*
+rm -Rf ${GEM_PATH::-1}/gems/minitest*
+rm -Rf ${GEM_PATH::-1}/gems/rails-dom-testing/*
+
+echo "\n-----> END HEROKU BUILDPACK SLUG CLEANUP"
