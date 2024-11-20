@@ -18,20 +18,4 @@ rm -rf $BUILD_DIR/node_modules
 echo "       Deleting test content"
 rm -rf $BUILD_DIR/spec
 
-echo "       Deleting unused gems in GEM_PATH (${GEM_PATH::-1})"
-#rm -Rf ${GEM_PATH::-1}/gems/sassc* ->
-rm -Rf ${GEM_PATH::-1}/gems/faker*
-rm -Rf ${GEM_PATH::-1}/gems/image_optim*
-rm -Rf ${GEM_PATH::-1}/gems/yard*
-rm -Rf ${GEM_PATH::-1}/gems/rubocop*
-rm -Rf ${GEM_PATH::-1}/gems/rdoc*
-rm -Rf ${GEM_PATH::-1}/gems/language_server-protocol*
-rm -Rf ${GEM_PATH::-1}/gems/reek*
-rm -Rf ${GEM_PATH::-1}/gems/factory_bot*
-rm -Rf ${GEM_PATH::-1}/gems/sitemap_generator*
-rm -Rf ${GEM_PATH::-1}/gems/annotate*
-rm -Rf ${GEM_PATH::-1}/gems/webrick*
-rm -Rf ${GEM_PATH::-1}/gems/minitest*
-rm -Rf ${GEM_PATH::-1}/gems/rails-dom-testing/*
-
 echo "       END HEROKU BUILDPACK SLUG CLEANUP"
