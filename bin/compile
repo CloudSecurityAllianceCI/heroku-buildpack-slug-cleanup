@@ -1,24 +1,24 @@
 #!/usr/bin/env bash
 # bin/compile BUILD_DIR CACHE_DIR ENV_DIR
 
-echo "-----> BEGIN HEROKU BUILDPACK SLUG CLEANUP\n"
+echo "-----> BEGIN HEROKU BUILDPACK SLUG CLEANUP"
 
 BUILD_DIR=$1
 
 # Cannot remove app/assets/config/manifest.js or the
 # release phase of review applications will fail.
-echo "-----> Deleting the nested app/assets directories"
+echo "       Deleting the nested app/assets directories"
 rm -rf $BUILD_DIR/app/assets/images
 rm -rf $BUILD_DIR/app/assets/video
 rm -rf $BUILD_DIR/app/assets/builds
 
-echo "-----> Deleting source content"
+echo "       Deleting source content"
 rm -rf $BUILD_DIR/node_modules
 
-echo "-----> Deleting test content"
+echo "       Deleting test content"
 rm -rf $BUILD_DIR/spec
 
-echo "-----> Deleting unused gems in GEM_PATH (${GEM_PATH::-1})"
+echo "       Deleting unused gems in GEM_PATH (${GEM_PATH::-1})"
 rm -Rf ${GEM_PATH::-1}/gems/sassc*
 rm -Rf ${GEM_PATH::-1}/gems/faker*
 rm -Rf ${GEM_PATH::-1}/gems/image_optim*
@@ -34,4 +34,4 @@ rm -Rf ${GEM_PATH::-1}/gems/webrick*
 rm -Rf ${GEM_PATH::-1}/gems/minitest*
 rm -Rf ${GEM_PATH::-1}/gems/rails-dom-testing/*
 
-echo "\n-----> END HEROKU BUILDPACK SLUG CLEANUP"
+echo "       END HEROKU BUILDPACK SLUG CLEANUP"
