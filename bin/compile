@@ -19,7 +19,7 @@ echo "       Deleting test content"
 rm -rf $BUILD_DIR/spec
 
 echo "       Deleting unused gems in GEM_PATH (${GEM_PATH::-1})"
-rm -Rf ${GEM_PATH::-1}/gems/sassc*
+#rm -Rf ${GEM_PATH::-1}/gems/sassc* ->
 rm -Rf ${GEM_PATH::-1}/gems/faker*
 rm -Rf ${GEM_PATH::-1}/gems/image_optim*
 rm -Rf ${GEM_PATH::-1}/gems/yard*
